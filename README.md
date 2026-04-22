@@ -34,7 +34,7 @@ ipfs-manager
 
 ## ✨ Key Features
 
-  - **HTTPS Path Gateway:** Configure a gateway path to serve IPFS content over a secure HTTPS connection. The suite automates the reverse proxy setup via Caddy, ensuring your content is accessible through a standard web browser with  SSL encryption.
+  - **Path Gateway:** Configure a gateway path to serve IPFS content over a secure HTTPS connection. The suite automates the reverse proxy setup via Caddy, ensuring your content is accessible through a standard web browser with  SSL encryption.
   - **Hybrid Connection Management:** Switch between direct local connections, localhost RPC, or remote RPC(**https://webui.ipfs.io**) via custom domains with ease.
   - **Automated SSL/TLS:** Full integration with **Caddy Server** for automatic HTTPS certificates on your Gateway and API endpoints.
   - **Smart Maintenance:** Includes a Garbage Collector (GC) toggle to prevent disk storage from reaching its limit.
@@ -73,7 +73,7 @@ chmod +x main.sh
   - **Privileges:** The script will prompt for `sudo` only when executing system-level changes (service management or binary installations).
 
 ## 📋 Suggested Workflow
-0.  **Connection:** To interact with the IPFS node you can choose between local installation(1), remote RPC(3) or local RPC(2) methods.
+0.  **Connection:** To interact with the IPFS node choose between a local installation(1), remote RPC(3) or local RPC(2) methods.
 1.  **Setup:** Use option 1 and 2 to install the binary and initialize your repository.
 2.  **Launch:** Use option 3 to configure the daemon (enable GC and systemd autostart).
 3.  **Expose:** Use option 4 to link your domain and enable SSL via Caddy.
