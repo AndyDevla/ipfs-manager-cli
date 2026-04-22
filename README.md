@@ -1,37 +1,88 @@
-# IPFS Command Installer
+# IPFS Manager CLI (Kubo Edition)
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://raw.githubusercontent.com/AndyDevla/ipfs-auto-installer/main/ipfs-auto-installer.sh)
 
-This automated script simplifies the installation process for IPFS (InterPlanetary File System) commands on your system. With just a few simple steps, you can have IPFS commands up and running quickly and efficiently.
+**IPFS Manager CLI** is a modular ecosystem of scripts designed to automate the full lifecycle of an IPFS (Kubo) node. It transforms a simple binary installation into a professional-grade suite capable of managing SSL Gateways, remote RPC access, and repository maintenance through an intuitive command-line interface.
 
-## Features
+## 📂 Project Structure
 
-- Ease of use, this script automates the process, saving you time and effort.
-- Flexible installation, choose how to run the installation script, online or offline.
+The suite is organized into functional modules to ensure a clean and scalable architecture:
 
-## Installation
-The script needs to be run as a normal user and will prompt you for password when sudo actions are initiated. Follow the on-screen prompts to customize installation options as needed, sit back and relax while the installer takes care of the rest.
+```text
+ipfs-manager
+├── cli
+│   └── ipfs-cli.sh            # Management console (MFS, Swarm, CLI)
+├── gateway
+│   ├── caddy-installer.sh     # Caddy Server setup
+│   ├── disable.sh             # Revert Gateway/RPC to factory defaults
+│   ├── path+RPC.sh            # Combined SSL Gateway & API setup
+│   ├── path.sh                # Path-based Gateway SSL setup
+│   └── RPC.sh                 # Remote API & WebUI SSL setup
+├── installer
+│   └── ipfs-installer.sh      # Binary installation & architecture detection
+├── main.sh                    # Main entry point & menu system
+├── node
+│   └── daemon.sh              # Daemon configuration & systemd service setup
+├── repo
+│   └── init.sh                # Repository initialization and tuning
+├── status
+│   └── services.sh            # Service monitoring and status overview
+└── uninstaller
+    ├── uninstaller-caddy.sh   # Caddy removal tool
+    └── uninstaller-ipfs.sh    # IPFS/Kubo removal tool
+```
 
-### Online:
-Open a terminal to execute a bash script directly from GitHub.
-```sh
-bash <(wget -qO- https://raw.githubusercontent.com/AndyDevla/ipfs-auto-installer/main/ipfs-auto-installer.sh)
+## ✨ Key Features
+
+  - **HTTPS Path Gateway:** Configure a gateway path to serve IPFS content over a secure HTTPS connection. The suite automates the reverse proxy setup via Caddy, ensuring your content is accessible through a standard web browser with  SSL encryption.
+  - **Hybrid Connection Management:** Switch between direct local connections, localhost RPC, or remote RPC(**https://webui.ipfs.io**) via custom domains with ease.
+  - **Automated SSL/TLS:** Full integration with **Caddy Server** for automatic HTTPS certificates on your Gateway and API endpoints.
+  - **Smart Maintenance:** Includes a Garbage Collector (GC) toggle to prevent disk storage from reaching its limit.
+  - **Fail-Safe Reversion:** The "Disable" sub-option allows you to reset `.config` and `Caddyfile` network settings to their original state in one click.
+  - **Best-Effort Multi-Init Support:** While primarily designed to work with **systemd**, the suite includes logic to detect and support other init systems.
+
+## 🚀 Installation & Usage
+
+### Online Execution (**ALPHA**)
+
+Run the suite directly from GitHub without manual cloning:
+
+```bash
+bash <(wget -qO- https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/refs/heads/main/ipfs-manager/main.sh)
 ```
 #### or 
-```sh
-bash <(curl -sSL https://raw.githubusercontent.com/AndyDevla/ipfs-auto-installer/main/ipfs-auto-installer.sh)
-```
-### Offline:
-Clone this repository to your local machine and execute the script as "sudo" user.
-```sh
-git clone https://github.com/AndyDevla/ipfs-auto-installer.git
-cd ipfs-auto-installer
-sudo bash ipfs-auto-installer.sh
+```bash
+bash <(curl -sSL https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/refs/heads/main/ipfs-manager/main.sh)
 ```
 
-## Usage:
-After installation, you can start using IPFS commands right away. Simply open your terminal or command prompt and type the desired IPFS command.
+### Local Setup
 
-## License
+Clone the repository for persistent access and development:
 
-GNU General Public License v3.0
+```bash
+git clone --depth 1 https://github.com/AndyDevla/ipfs-manager-cli.git
+cd ipfs-manager-cli
+chmod +x main.sh
+./main.sh
+```
+
+## 🛠 Requirements
+
+  - **OS:** Linux (Debian/Ubuntu highly recommended).
+  - **Dependencies:** `curl`, `jq`.
+  - **Privileges:** The script will prompt for `sudo` only when executing system-level changes (service management or binary installations).
+
+## 📋 Suggested Workflow
+0.  **Connection:** To interact with the IPFS node you can choose between local installation(1), remote RPC(3) or local RPC(2) methods.
+1.  **Setup:** Use option 1 and 2 to install the binary and initialize your repository.
+2.  **Launch:** Use option 3 to configure the daemon (enable GC and systemd autostart).
+3.  **Expose:** Use option 4 to link your domain and enable SSL via Caddy.
+4.  **Manage:** Use option 6 to interact with the MFS (Mutable File System) or check network peers.
+
+## ⚖️ License
+
+This project is licensed under the **GNU General Public License v3.0**. You are free to copy, modify, and distribute this software as long as the same license is maintained.
+
+-----
+
+Developed by [AndyDevla](https://github.com/AndyDevla) 🚀
