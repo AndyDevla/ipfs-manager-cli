@@ -43,16 +43,20 @@ ipfs-manager
 
 ## 🚀 Installation & Usage
 
+```bash
+curl -sSL https://github.com/AndyDevla/ipfs-manager-cli/archive/refs/heads/main.tar.gz | tar xz && cd ipfs-manager-cli-main && chmod +x main.sh && ./main.sh
+```
+
 ### Online Execution (**ALPHA**)
 
 Run the suite directly from GitHub without manual cloning:
 
 ```bash
-bash <(wget -qO- https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/refs/heads/main/ipfs-manager/main.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/refs/heads/main/main.sh)
 ```
 #### or 
 ```bash
-bash <(curl -sSL https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/refs/heads/main/ipfs-manager/main.sh)
+bash <(curl -sSL https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/refs/heads/main/main.sh)
 ```
 
 ### Local Setup
