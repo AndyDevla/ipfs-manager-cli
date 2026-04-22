@@ -53,7 +53,7 @@ curl -sSL https://github.com/AndyDevla/ipfs-manager-cli/archive/refs/heads/main.
 
 ### Online Execution
 
-Run the suite directly from GitHub without manual cloning:
+Run an **standalone** version of **ipfs-manager-cli** directly from GitHub without manual cloning:
 
 ```bash
 bash <(wget -qO- https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/refs/heads/main/ipfs-manager-cli-standalone.sh)
