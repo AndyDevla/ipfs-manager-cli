@@ -45,6 +45,8 @@ ipfs-manager
 
 ### One-Liner Shell Command
 
+Download the repository and automatically run ```main.sh```
+
 ```bash
 curl -sSL https://github.com/AndyDevla/ipfs-manager-cli/archive/refs/heads/main.tar.gz | tar xz && cd ipfs-manager-cli-main && chmod +x main.sh && ./main.sh
 ```
