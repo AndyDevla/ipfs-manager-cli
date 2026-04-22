@@ -43,6 +43,8 @@ ipfs-manager
 
 ## 🚀 Installation & Usage
 
+### One-Liner Shell Command
+
 ```bash
 curl -sSL https://github.com/AndyDevla/ipfs-manager-cli/archive/refs/heads/main.tar.gz | tar xz && cd ipfs-manager-cli-main && chmod +x main.sh && ./main.sh
 ```
