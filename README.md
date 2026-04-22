@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://raw.githubusercontent.com/AndyDevla/ipfs-auto-installer/main/ipfs-auto-installer.sh)
 
-**IPFS Manager CLI** is a modular ecosystem of scripts designed to automate the full lifecycle of an IPFS (Kubo) node. It transforms a simple binary installation into a professional-grade suite capable of managing SSL Gateways, remote RPC access, and repository maintenance through an intuitive command-line interface.
+**IPFS Manager CLI** is a modular ecosystem of scripts designed to automate the full lifecycle of an IPFS (Kubo) node. It transforms a simple binary installation into a solid-grade suite capable of managing SSL Gateways, remote RPC access, and repository maintenance through an intuitive command-line interface.
 
 ## 📂 Project Structure
 
