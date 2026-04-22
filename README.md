@@ -51,16 +51,16 @@ Download the repository and automatically run ```main.sh```
 curl -sSL https://github.com/AndyDevla/ipfs-manager-cli/archive/refs/heads/main.tar.gz | tar xz && cd ipfs-manager-cli-main && chmod +x main.sh && ./main.sh
 ```
 
-### Online Execution
+### Online Execution (Alpha)
 
 Run an **standalone** version of **ipfs-manager-cli** directly from GitHub without manual cloning:
 
 ```bash
-bash <(wget -qO- https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/refs/heads/main/ipfs-manager-cli-standalone.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/refs/heads/main/main.sh)
 ```
 #### or try
 ```bash
-bash <(curl -sSL https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/refs/heads/main/ipfs-manager-cli-standalone.sh)
+bash <(curl -sSL https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/refs/heads/main/main.sh)
 ```
 
 ### Local Setup
