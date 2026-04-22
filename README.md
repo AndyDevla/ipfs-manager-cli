@@ -1,4 +1,4 @@
-# IPFS Manager CLI (Kubo Edition)
+# IPFS Manager CLI (kubo)
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://raw.githubusercontent.com/AndyDevla/ipfs-auto-installer/main/ipfs-auto-installer.sh)
 
@@ -49,16 +49,16 @@ ipfs-manager
 curl -sSL https://github.com/AndyDevla/ipfs-manager-cli/archive/refs/heads/main.tar.gz | tar xz && cd ipfs-manager-cli-main && chmod +x main.sh && ./main.sh
 ```
 
-### Online Execution (**ALPHA**)
+### Online Execution
 
 Run the suite directly from GitHub without manual cloning:
 
 ```bash
-bash <(wget -qO- https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/refs/heads/main/main.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/refs/heads/main/ipfs-manager-cli-standalone.sh)
 ```
-#### or 
+#### or try
 ```bash
-bash <(curl -sSL https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/refs/heads/main/main.sh)
+bash <(curl -sSL https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/refs/heads/main/ipfs-manager-cli-standalone.sh)
 ```
 
 ### Local Setup
