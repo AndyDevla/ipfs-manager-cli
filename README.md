@@ -60,7 +60,7 @@ bash <(curl -sSL https://raw.githubusercontent.com/AndyDevla/ipfs-manager-cli/re
 Clone the repository for persistent access and development:
 
 ```bash
-git clone --depth 1 https://github.com/AndyDevla/ipfs-manager-cli.git
+git clone https://github.com/AndyDevla/ipfs-manager-cli.git
 cd ipfs-manager-cli
 chmod +x main.sh
 ./main.sh
