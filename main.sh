@@ -26,29 +26,6 @@ fi
 # ──────────────────────────────────────────
 # ~$ TEMP_AUTH=user:password TEMP_DOMAIN=midominio.com ./main.sh
 
-# ==========================================
-# Wrapper de Ejecución (Modular / Standalone)
-# ==========================================
-invoke_module() {
-    local module_path="$1"
-    
-    # Convertimos la ruta "installer/ipfs-installer.sh" al nombre de función "installer_ipfs_installer"
-    local func_name=$(echo "$module_path" | sed 's/\//_/g' | sed 's/-/_/g' | sed 's/\.sh//g')
-    
-    # Comprobamos si la función existe en memoria (Modo Standalone)
-    if declare -f "$func_name" > /dev/null; then
-        $func_name
-    
-    # Si la función no existe, comprobamos si el archivo físico existe (Modo Modular)
-    elif [[ -f "$BASE_DIR/$module_path" ]]; then
-        bash "$BASE_DIR/$module_path"
-        
-    else
-        echo -e "\n\033[0;31m[ERROR] Módulo '$module_path' no encontrado.\033[0m"
-        read -p "Presiona Enter para continuar..."
-    fi
-}
-
 # =============================================================================
 #  BUCLE MAESTRO DE LA APLICACIÓN
 # =============================================================================
@@ -174,7 +151,7 @@ while true; do
     done
 
     export IPFS_USER=$ACTUAL_USER
-    
+
     # ──────────────────────────────
     # Menú Principal
     # ──────────────────────────────
@@ -214,20 +191,17 @@ while true; do
         case $opt in
             1)
                 echo -e "\n${YELLOW}[INFO] Iniciando instalador...${RESET}"
-                #sudo bash "$BASE_DIR/installer/ipfs-installer.sh"
-                #read -p "Presiona Enter para volver..."
-                #;;
-                invoke_module "installer/ipfs-installer.sh" ;;
+                sudo bash "$BASE_DIR/installer/ipfs-installer.sh"
+                read -p "Presiona Enter para volver..."
+                ;;
             2)
-                #bash "$BASE_DIR/repo/init.sh"
-                #read -p "Presiona Enter para volver..."
-                #;;
-                invoke_module "repo/init.sh" ;;
+                bash "$BASE_DIR/repo/init.sh"
+                read -p "Presiona Enter para volver..."
+                ;;
             3)
-                #sudo bash "$BASE_DIR/node/daemon.sh"
-                #read -p "Presiona Enter para volver..."
-                #;;
-                invoke_module "node/daemon.sh" ;;
+                sudo bash "$BASE_DIR/node/daemon.sh"
+                read -p "Presiona Enter para volver..."
+                ;;
             4)
                 while true; do
                     clear
@@ -248,55 +222,47 @@ while true; do
 
                     case $subopt in
                         1)
-                            #sudo bash "$BASE_DIR/gateway/caddy-installer.sh"
-                            #read -p "Presiona Enter para volver..."
-                            #;;
-                            invoke_module "gateway/caddy-installer.sh" ;;
+                            sudo bash "$BASE_DIR/gateway/caddy-installer.sh"
+                            read -p "Presiona Enter para volver..."
+                            ;;
                         2)
-                            #sudo bash "$BASE_DIR/gateway/path.sh"
-                            #read -p "Presiona Enter para volver..."
-                            #;;
-                            invoke_module "gateway/path.sh" ;;
+                            sudo bash "$BASE_DIR/gateway/path.sh"
+                            read -p "Presiona Enter para volver..."
+                            ;;
                         3)
-                            #sudo bash "$BASE_DIR/gateway/RPC.sh"
-                            #read -p "Presiona Enter para volver..."
-                            #;;
-                            invoke_module "gateway/RPC.sh" ;;
+                            sudo bash "$BASE_DIR/gateway/RPC.sh"
+                            read -p "Presiona Enter para volver..."
+                            ;;
                         4)
-                            #sudo bash "$BASE_DIR/gateway/path+RPC.sh"
-                            #read -p "Presiona Enter para volver..."
-                            #;;
-                            invoke_module "gateway/path+RPC.sh" ;;
+                            sudo bash "$BASE_DIR/gateway/path+RPC.sh"
+                            read -p "Presiona Enter para volver..."
+                            ;;
                         5)
-                            #sudo bash "$BASE_DIR/gateway/disable.sh"
-                            #read -p "Presiona Enter para volver..."
-                            #;;
-                            invoke_module "gateway/disable.sh" ;;                     
+                            sudo bash "$BASE_DIR/gateway/disable.sh"
+                            read -p "Presiona Enter para volver..."
+                            ;;                      
                         0) break ;; 
                         *) echo -e "\n${RED}Opción inválida${RESET}"; sleep 1 ;;
                     esac
                 done
                 ;;
             5)
-                #sudo bash "$BASE_DIR/status/services.sh"
-                #read -p "Presiona Enter para volver..."
-                #;;
-                invoke_module "status/services.sh" ;;
+                sudo bash "$BASE_DIR/status/services.sh"
+                read -p "Presiona Enter para volver..."
+                ;;
             6)  
-                #bash "$BASE_DIR/cli/ipfs-cli.sh"
-                #read -p "Presiona Enter para volver..."
-                #;;
-                invoke_module "cli/ipfs-cli.sh" ;;
+                bash "$BASE_DIR/cli/ipfs-cli.sh"
+                read -p "Presiona Enter para volver..."
+                ;;
             7)
                 echo -e "${RED}¡ATENCIÓN! Vas a eliminar componentes del sistema.${RESET}"
                 echo "  a) Desinstalar Caddy"
                 echo "  b) Desinstalar IPFS (Kubo)"
                 read -p "  Elige opción [a/b]: " rm_opt
                 if [[ "$rm_opt" == "a" ]]; then
-                    #sudo bash "$BASE_DIR/uninstaller/uninstaller-caddy.sh"
-                    invoke_module "uninstaller/uninstaller-caddy.sh" 
+                    sudo bash "$BASE_DIR/uninstaller/uninstaller-caddy.sh"
                 elif [[ "$rm_opt" == "b" ]]; then
-                    invoke_module "uninstaller/uninstaller-ipfs.sh"
+                    sudo bash "$BASE_DIR/uninstaller/uninstaller-ipfs.sh"
                 fi
                 read -p "Presiona Enter para volver..."
                 ;;                      
